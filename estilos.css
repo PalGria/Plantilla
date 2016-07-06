@@ -1,34 +1,38 @@
 body{
   background: #7E99FD; /* For browsers that do not support gradients */
   font-family: sans-serif;
+
 }
 header{
 	text-align:center;
-}
-section{
-	text-align: center;
-	margin-left: 5em;
-	margin-right: 5em;
-	background-color:white;
+  background-color: white;
+  border-radius: 5px;
 
 }
-section > section{
+footer{
+  text-align:center;
+  background-color: white;
+  text-align:center;
+
 }
+
+section{
+	text-align: center;
+	background-color:white;
+  border-radius: 5px;
+  margin:5px;
+  padding: 5px;
+}
+
 section >section> div {
 	overflow-x:auto;
+  padding: 5px;
 }
 a{
 	text-align: center;
 }
-footer{
-	text-align:center;
-}
 
-#mvp{
-    border-style: solid;
-    border-width: 5px;
-    margin-bottom: 1em;
-}
+
 #clasificaciones{
   width:500px;
   margin: 10px auto;
@@ -44,4 +48,24 @@ footer{
     width: 100px;
     height: 100px;
     margin: 10px;
+}
+@media (min-width: 550px) {
+
+  section
+  {
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+  #mvp{
+      margin-bottom: 1em;
+  }
+  header{
+    margin-left: 2em;
+    margin-right: 2em;
+
+  }
+  footer{
+    margin-left: 10em;
+    margin-right: 10em;
+  }
 }
