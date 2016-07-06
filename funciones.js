@@ -299,4 +299,7 @@ function drag(ev, tipo) {
 function click(){
 	alert("hago cosas ma bois");
 }
+function drop(ev){
+	alert("Hago cosas ma bois");
+}
 //FIN DE JUEGO FICHAS
