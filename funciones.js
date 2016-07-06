@@ -1,8 +1,62 @@
-function arranque_personalizado()
+//DEFINO VARIABLES PARA EL JUEGO
+
+//FIN DE DEFINICION
+var dragItems = document.querySelectorAll('[draggable=true]');
+
+//codigo de adaptacion a firefox (firefox solo permite algunos objetos draggables)
+for (var i = 0; i < dragItems.length; i++) {
+  addEvent(dragItems[i], 'dragstart', function (event) {
+    // store the ID of the element, and collect it on the drop later on
+    event.dataTransfer.setData('Text', this.id);
+  });
+}
+//fin de codigo de adaptacion a firefox
+
+
+function arranque_index()
 {
 	llamada_ajax_generico("GET","clasificacion");
 }
 
+//LLAMADAS AJAX
+function ordenar_descentemente(metodo)
+{
+	nodo2=document.getElementById("clasificaciones");
+	listadeelementos=nodo2.getElementsByTagName("tr");
+	for (var p = 1;listadeelementos.length > p; p++) 
+	{
+		for (var t = 1;listadeelementos.length > t; t++) 
+		{
+			valor1="";
+			valor2="";
+			if(metodo == 1) //si se ordena por ganadas
+			{
+				valor1 = listadeelementos[t].getElementsByTagName("td")[1].innerHTML;
+				if((t+1) < listadeelementos.length)
+				{
+					valor2 = listadeelementos[t+1].getElementsByTagName("td")[1].innerHTML;
+				}
+			}
+			else if(metodo == 2) //si se ordena por victorias
+			{
+				valor1 = listadeelementos[t].getElementsByTagName("td")[3].innerHTML.replace("%","");
+				if((t+1) < listadeelementos.length)
+				{
+					valor2 = listadeelementos[t+1].getElementsByTagName("td")[3].innerHTML.replace("%","");
+				}
+			}
+			
+			if(valor2 != "")
+			{
+				if(parseInt(valor1) < parseInt(valor2))
+				{
+					nodo2.insertBefore(listadeelementos[t+1],listadeelementos[t]);
+					console.log("valor1 es menor que valor2 "+valor1+"--"+valor2);
+				}
+			}
+		}
+	}
+}
 
 function procesar_cambios_de_clasificacion()
 {
@@ -106,10 +160,6 @@ function foormatear(datos,que_es)//"que_es" segun lo que sea se pone de una form
 	if(que_es == "clasificacion")
 	{
 			nodo2=document.getElementById("clasificaciones");//nodo div de index
-			while(nodo2.hasChildNodes())//con esto eliminamos todos los comentarios que hayan antes
-			{
-				nodo2.removeChild(nodo2.firstChild);	
-			}
 			fila=document.createElement("tr");
 			fila.innerHTML = 
 			'<th> Usuario:&nbsp;</th>'
@@ -193,3 +243,60 @@ function crearObjAjax()
 	}
 	return xmlhttp;
 }
+//FIN DE LLAMADAS AJAX
+
+//JUEGO CANVAS 4 EN RAYA
+
+function getPosition(event)
+{
+	var x = new Number();
+	var y = new Number();
+	var canvas = document.getElementById("game");
+
+	if (event.x != undefined && event.y != undefined)//esto se realiza en todos los navegadores menos en firefox
+	{
+	  x = event.x;
+	  y = event.y;
+	}
+	else //metodo para firefox
+	{
+	  x = event.clientX + document.body.scrollLeft +
+		  document.documentElement.scrollLeft;
+	  y = event.clientY + document.body.scrollTop +
+		  document.documentElement.scrollTop;
+	}
+
+	x -= canvas.offsetLeft;
+	y -= canvas.offsetTop;
+	
+	xc=cv.clientWidth/cv.width;
+	yc=cv.clientHeight/cv.height;
+	
+	x=x/xc;
+	y=y/yc;
+	
+	var posiciones = new Array();
+	posiciones["x"]=Math.floor(x/40);
+	posiciones["y"]=Math.floor(y/40);
+	
+	return posiciones;
+}
+
+function posicionRaton(){
+	var canvas = document.getElementById('game');
+	canvas.addEventListener('click', pintar);
+
+}
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev, tipo) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+function click(){
+	alert("hago cosas ma bois");
+}
+//FIN DE JUEGO FICHAS
