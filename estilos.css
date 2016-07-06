@@ -129,9 +129,15 @@ div.content-wrap > a
 	.fichas{
 	  height: 20px;
 	  width: 80px;
-	  background-color: red;
 	}
+  #ficharoja{
+    background-color: red;
 
+  }
+  #fichaverde{
+    background-color: green;
+
+  }
   section
   {
 		margin-left: 2em;

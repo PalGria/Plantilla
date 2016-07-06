@@ -300,6 +300,8 @@ function click(){
 	alert("hago cosas ma bois");
 }
 function drop(ev){
-	alert("Hago cosas ma bois");
+	//saco por alert el id del target y el del trigger
+	alert("Voy hacia " + ev.target.id +" y soy el bueno de " + ev.dataTransfer.getData("text") );
+
 }
 //FIN DE JUEGO FICHAS
