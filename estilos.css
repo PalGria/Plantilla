@@ -7,7 +7,7 @@
 
 body
 {
-	min-height: 100vh; /* Footer push */
+min-height: 100vh; /* Footer push */
   background: #7E99FD; /* For browsers that do not support gradients */
   font-family: sans-serif;
 
@@ -21,6 +21,28 @@ body
 canvas,#things{
 	  border: 0.1em;
 	  border-style: solid;
+	  max-width:90%;
+}
+
+#things{
+	width:280px;
+	height:240px;
+	margin:auto;	
+}
+
+.fichas
+{
+	  height: 20px;
+	  width: 80px;
+	  background-color: red;
+}
+
+#ficharoja{
+    background-color: red;
+}
+
+#fichaverde{
+    background-color: green;
 }
 
 header
@@ -133,15 +155,9 @@ div.content-wrap > a
 	.fichas{
 	  height: 20px;
 	  width: 80px;
+	  background-color: red;
 	}
-  #ficharoja{
-    background-color: red;
 
-  }
-  #fichaverde{
-    background-color: green;
-
-  }
   section
   {
 		margin-left: 2em;
