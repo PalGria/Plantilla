@@ -18,6 +18,10 @@ body
 	justify-content: center;
 }
 
+canvas,#things{
+	  border: 0.1em;
+	  border-style: solid;
+}
 
 header
 {
