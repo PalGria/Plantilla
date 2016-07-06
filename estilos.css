@@ -107,6 +107,21 @@ a{
 	{
 		border-radius: 5px;
 	}
+	canvas{
+	  border: 1px;
+	  border-style: solid;
+	}
+	#things{
+	  border: 1px;
+	  border-style: solid;
+	  width:280px;
+	  height: 240px;
+	}
+	.fichas{
+	  height: 20px;
+	  width: 80px;
+	  background-color: red;
+	}
 
   section
   {
